@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+<title>Services</title>
+{% endblock title %}
+
+{% block headerpic %}
+{% endblock headerpic %}
+
+{% block content %}
+
+{% for servic in service %}
+
+
+
+
+<div class="contact">
+    <div class="container">
+      <!-- contacts card -->
+      <div class="card card-default" id="card_contacts">
+          <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
+              <ul class="list-group pull-down" id="contact-list">
+                  <li class="list-group-item">
+                      <div class="row w-100">
+                          <div class="col-12 col-sm-6 col-md-3 px-0">
+                              <img src="{{servic.img.url}}" alt="Mike Anamendolla" class="rounded-circle mx-auto d-block img-fluid">
+                          </div>
+                          <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                              <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                              <label class="name lead">{{servic.name}}</label>
+                              <br>                               
+                              <span class="text-muted small" style="font-size: medium;">{{servic.describe|linebreaks }}</span>
+                          </div>
+                      </div>
+                  </li>
+                  
+      </div>
+  </div>
+  </div>
+
+{% endfor %}
+
+
+
+{% endblock content %}

@@ -1,0 +1,110 @@
+{% extends "index.html" %}
+{% load static %}
+{% load markdown_deux_tags %}
+{% load crispy_forms_tags %}
+{% load social_share %}
+
+
+
+
+
+{% block title %}<title> {{post.title|capfirst}}</title> {% endblock title %}
+
+{% block headerpic %}{% endblock headerpic %}
+
+
+{% block content %}
+
+<div class="icon-bar">
+  <i class="fa fa-share-alt" style="font-size:24px"></i> share 
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ref_url}}" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a> 
+ <!-- <a href="https://twitter.com/home?status={{ref_url}}" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a> 
+  <a href="https://plus.google.com/share?url={{requst.build_absolute_uri}}" target="_blank" class="google"><i class="fa fa-google"></i></a> 
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url={{requst.build_absolute_uri}}" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{requst.build_absolute_uri}}" class="youtube"><i class="fa fa-youtube"></i></a> -->
+</div>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+
+    </div>
+
+    <div class="col-sm-9">
+     
+      
+      {{share_string}}
+      <hr>
+      <h2>{{post.title|capfirst}}</h2>
+      <h5><span class="glyphicon glyphicon-time"></span>  Published on {{post.publish}} by {{post.author}}</h5>
+      <img src="{{post.img.url}}" alt="Image" class="w3-left w3-margin-right" style="width:100%">
+      <!--<h5><span class="label label-success">Lorem</span></h5><br>-->
+      <p>{{ post.body|linebreaks }}</p>
+      <hr>
+
+      
+      
+      <br><br>
+      {% with comments.count as total_comments %}
+      <p><span class="badge">{{total_comments}}</span> Comment{{total_comments|pluralize}}</p><br>
+      {% endwith %}
+
+      <div class="row">
+      {% for comment in comments %}
+        <div class="col-sm-2 text-center">
+          <img src=" {% static 'pics/defpic.jpg' %}" class="img-circle" height="65" width="65" alt="Avatar">
+        </div>
+        <div class="col-sm-10">
+          <h4>{{comment.name}} <small>{{comment.created}} </small></h4>
+          <p>{{ comment.body|markdown }}</p>
+          <br>
+        </div>
+
+
+        {% empty %}
+        <p>There are no comments yet.</p>
+    {% endfor %}
+
+    {% if new_comment %}
+        <p>Your comment has been added.</p>
+    {% else %}
+          <br>
+          
+        <div class="row-fluid">
+<h4 class="text-info" style="text-align:center;">Add a new comment.</h4>  <br>
+          <form  action="." method="post" class="col-18">
+            {% csrf_token %}
+            <div class="form-group col-md-16 mb-0">
+            {{ comment_form|crispy }}
+            {% if user.is_authenticated %}
+            <input type="submit" value="Add comment" class="btn btn-primary">
+            {% else %}
+            <a href=" {% url 'login' %}"><input type="button" value="Login" class="btn btn-primary"></a>
+            {% endif %}
+            </div>
+            
+            
+          </form>
+
+        </div>
+    {% endif %}
+        
+        <div class="col-sm-10">
+          
+          
+          
+          
+          <div class="row">
+            
+            <div class="col-xs-10">
+
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

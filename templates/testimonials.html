@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% load static %}
+{% static "photos" as baseUrl %}
+{% block title %}
+<title>Testimonials</title>
+{% endblock title %}
+
+{% block headerpic %}
+{% endblock headerpic %}
+
+{% block content %}
+
+{% for test in testmony %}
+
+<div class="contact">
+    <div class="container">
+      <!-- contacts card -->
+      <div class="card card-default" id="card_contacts">
+          <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
+              <ul class="list-group pull-down" id="contact-list">
+                  <li class="list-group-item">
+                      <div class="row w-100">
+                          <div class="col-12 col-sm-6 col-md-3 px-0">
+                                         
+                              <img src="{{test.img.url}}" alt="PHOTO MISSING!" class="rounded-circle mx-auto d-block img-fluid">
+                              
+                          </div>
+                          <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                              <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                              <label class="name lead">{{test.name}}</label>
+                              <br> 
+                              
+                              <span class="text-muted">{{test.titleID}}</span>
+                              <br>
+                              
+                              <span class="text-muted small">{{test.datepost}}</span>
+                              <br>
+                              
+                              <span class="text-muted small " style="font-size: medium;">{{test.testmony}}</span>
+                          </div>
+                      </div>
+                  </li>
+                  
+      </div>
+  </div>
+  </div>
+
+{% endfor %}
+
+
+{% endblock content %}

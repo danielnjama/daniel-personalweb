@@ -1,0 +1,138 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>contacts</title>
+{% endblock title %}
+{% block headerpic %}
+
+{% endblock headerpic %}
+
+{% block content %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+
+ 
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+     
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Send me a message</h1>
+     
+      <hr>
+      <form id="contact-form" method="post" role="form" action="send_email">
+      {% csrf_token %}
+
+    <div class="messages"></div>
+
+    <div class="controls">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_name">Subject *</label>
+                    <input id="form" type="text" name="subject" class="form-control" placeholder="Please enter the subject of your email *" required="required" data-error="Firstname is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_email">Email *</label>
+                    <input id="form_email" type="email" name="from_email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_message">Message *</label>
+                    <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                     <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-success btn-send" value="Send message">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-muted">
+                    
+            </div>
+        </div>
+    </div>
+
+</form>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+      
+        <p><i class="material-icons">contact_phone</i></p>
+        <h3>0717828927</h3>
+      </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
+
+
+
+{% endblock content %}

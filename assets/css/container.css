@@ -1,0 +1,23 @@
+.image {
+    display: -moz-inline-box;
+    -moz-box-orient: vertical;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    font: 0/0 serif;
+    text-shadow: none;
+    color: transparent;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+  .image {
+    *display: inline;
+  }
+  .image .inner {
+    display: block;
+    height: 0;
+  }
