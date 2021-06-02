@@ -36,5 +36,5 @@ s3transfer==0.3.2
 six==1.14.0
 sqlparse==0.3.0
 twilio==6.35.3
-urllib3==1.25.8
+urllib3==1.26.5
 whitenoise==5.0.1
